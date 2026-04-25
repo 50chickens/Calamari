@@ -17,6 +17,7 @@
 *.gif binary
 *.jpg binary
 *.png binary
+*.nupkg binary
 
 *.ascx text
 *.cmd text

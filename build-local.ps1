@@ -34,6 +34,7 @@ if (-not [string]::IsNullOrEmpty($Runtime)) {
 ###################################################################################
 "@
     Write-Host $RuntimeSpecifiedWarning -ForegroundColor Yellow
+}
 
 $branch = & git branch --show-current
 

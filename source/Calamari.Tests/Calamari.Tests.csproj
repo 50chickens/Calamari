@@ -22,7 +22,7 @@
         <DefineConstants>$(DefineConstants);NETFX;IIS_SUPPORT;USE_NUGET_V2_LIBS;USE_OCTODIFF_EXE;</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="NuGet.CommandLine" Version="7.0.0">
+        <PackageReference Include="NuGet.CommandLine" Version="7.3.1">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
