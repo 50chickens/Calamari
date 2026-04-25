@@ -5,7 +5,7 @@
         <PackageProjectUrl>https://github.com/OctopusDeploy/Calamari/</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <LangVersion>default</LangVersion>
-        <TargetFrameworks>net462;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net481;netstandard2.1</TargetFrameworks>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <PackageId>Octopus.Calamari.Testing</PackageId>
     </PropertyGroup>

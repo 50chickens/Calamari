@@ -138,7 +138,7 @@ namespace Calamari.Azure
             var appSettings = await GetAppSettingsAsync(armClient, targetSite);
 
             var slotSettings = await GetSlotSettingsAsync(armClient, targetSite);
-            var slotSettingsLookup = slotSettings.ToHashSet();
+            var slotSettingsLookup = new HashSet<string>(slotSettings);
 
             return appSettings.Properties.Select(
                                                  setting =>

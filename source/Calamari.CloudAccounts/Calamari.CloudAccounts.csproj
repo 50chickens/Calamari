@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <RootNamespace>Calamari.CloudAccounts</RootNamespace>
-        <TargetFrameworks>net462;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net481;netstandard2.1</TargetFrameworks>
         <PackageId>Octopus.Calamari.CloudAccounts</PackageId>
         <Title>Calamari.CloudAccounts</Title>
         <Authors>Octopus Deploy</Authors>
@@ -13,7 +13,7 @@
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net481'">
         <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
         <Reference Include="Microsoft.CSharp" />
     </ItemGroup>

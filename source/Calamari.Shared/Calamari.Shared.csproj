@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>1.0.0.0</Version>
     <OutputType>Library</OutputType>
@@ -23,16 +23,16 @@
     <RootNamespace>Calamari</RootNamespace>
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
-    <TargetFrameworks>net462;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net481;netstandard2.1</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net462' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net481' ">
     <DefineConstants>$(DefineConstants);NETFX;USE_NUGET_V2_LIBS;USE_OCTODIFF_EXE;</DefineConstants>
     <PlatformTarget>anycpu</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
     <DefineConstants>$(DefineConstants);USE_NUGET_V3_LIBS</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net462' ">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net481' ">
     <NoWarn>CS8600;CS8601;CS8602;CS8603;CS8604;DE0003;DE0004</NoWarn>
   </PropertyGroup>
 
@@ -68,7 +68,7 @@
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.5.0" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net462' ">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net481' ">
     <PackageReference Include="MarkdownSharp" Version="1.13.0.0" />
     <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
     <PackageReference Include="Microsoft.Web.Administration" Version="7.0.0.0" />

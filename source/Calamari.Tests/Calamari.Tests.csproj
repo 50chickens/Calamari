@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <AssemblyName>Calamari.Tests</AssemblyName>
@@ -10,7 +10,7 @@
         <ApplicationIcon/>
         <StartupObject/>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64;linux-arm;linux-arm64</RuntimeIdentifiers>
-        <TargetFrameworks>net462;net8.0</TargetFrameworks>
+        <TargetFrameworks>net481;net8.0</TargetFrameworks>
         <LangVersion>8</LangVersion>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <EmitLegacyAssetsFileItems>true</EmitLegacyAssetsFileItems>
@@ -18,7 +18,7 @@
     <PropertyGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
         <DefineConstants>$(DefineConstants);NETCORE;AZURE_CORE;JAVA_SUPPORT</DefineConstants>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net481' ">
         <DefineConstants>$(DefineConstants);NETFX;IIS_SUPPORT;USE_NUGET_V2_LIBS;USE_OCTODIFF_EXE;</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
@@ -49,7 +49,7 @@
         <PackageReference Include="NGitLab" Version="10.4.1"/>
         <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.3.0"/>
     </ItemGroup>
-    <ItemGroup Condition="'$(TargetFramework)'=='net462'">
+    <ItemGroup Condition="'$(TargetFramework)'=='net481'">
         <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0"/>
         <Reference Include="System.Core"/>
         <Reference Include="System.Net"/>
@@ -273,7 +273,7 @@
     <Target Name="RunResolvePackageDependencies" Condition="'$(RunResolvePackageDependencies)' != ''"/>
 
     <Target Name="GetToolFiles" DependsOnTargets="RunResolvePackageDependencies">
-        <CreateItem Include="@(PackageDefinitions)" Condition=" '$(TargetFramework)' == 'net462' And '%(Name)' == 'NuGet.CommandLine'">
+        <CreateItem Include="@(PackageDefinitions)" Condition=" '$(TargetFramework)' == 'net481' And '%(Name)' == 'NuGet.CommandLine'">
             <Output TaskParameter="Include" ItemName="NuGetCommandLineRef"/>
         </CreateItem>
         <PropertyGroup>
@@ -281,7 +281,7 @@
         </PropertyGroup>
         <ItemGroup>
             <DotnetScriptFiles Include="$(MSBuildProjectDirectory)/../Calamari.Scripting/DotnetScript/dotnet-script.*.zip"/>
-            <NuGetFiles Include="$(NuGetCommandLine)" Condition=" '$(TargetFramework)' == 'net462'"/>
+            <NuGetFiles Include="$(NuGetCommandLine)" Condition=" '$(TargetFramework)' == 'net481'"/>
         </ItemGroup>
     </Target>
 
@@ -289,7 +289,7 @@
         <ItemGroup>
             <DotnetScriptFilesExe Include="$(OutputPath)/dotnet-script/*.sh;$(OutputPath)/dotnet-script/*.exe"/>
         </ItemGroup>
-        <Copy SourceFiles="@(NuGetFiles)" DestinationFolder="$(OutputPath)/NuGet/" SkipUnchangedFiles="true" Condition="'$(TargetFramework)' == 'net462'"/>
+        <Copy SourceFiles="@(NuGetFiles)" DestinationFolder="$(OutputPath)/NuGet/" SkipUnchangedFiles="true" Condition="'$(TargetFramework)' == 'net481'"/>
         <Unzip SourceFiles="@(DotnetScriptFiles)" DestinationFolder="$(OutputPath)" SkipUnchangedFiles="true"/>
         <Exec Command="chmod +x %(DotnetScriptFilesExe.Identity)" IgnoreExitCode="true" Condition="!$([MSBuild]::IsOSPlatform('Windows'))"/>
     </Target>
@@ -298,7 +298,7 @@
         <ItemGroup>
             <DotnetScriptFilesExe Include="$(PublishDir)/dotnet-script/*.sh;$(PublishDir)/dotnet-script/*.exe"/>
         </ItemGroup>
-        <Copy SourceFiles="@(NuGetFiles)" DestinationFolder="$(PublishDir)/NuGet/" SkipUnchangedFiles="true" Condition="'$(TargetFramework)' == 'net462'"/>
+        <Copy SourceFiles="@(NuGetFiles)" DestinationFolder="$(PublishDir)/NuGet/" SkipUnchangedFiles="true" Condition="'$(TargetFramework)' == 'net481'"/>
         <Unzip SourceFiles="@(DotnetScriptFiles)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="true"/>
         <Exec Command="chmod +x %(DotnetScriptFilesExe.Identity)" IgnoreExitCode="true" Condition="!$([MSBuild]::IsOSPlatform('Windows'))"/>
     </Target>

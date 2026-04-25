@@ -2,14 +2,14 @@
 
     <PropertyGroup>
         <RootNamespace>Calamari.GoogleCloudAccounts</RootNamespace>
-        <TargetFrameworks>net462;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net481;netstandard2.1</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <!-- CS8632: The annotation for nullable reference types should only be used in code within a '#nullable' annotations context. -->
         <NoWarn>CS8632</NoWarn>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net481'">
         <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
         <Reference Include="Microsoft.CSharp" />
     </ItemGroup>

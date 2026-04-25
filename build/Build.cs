@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -186,9 +186,9 @@ partial class Build : NukeBuild
                            var nugetVersion = NugetVersion.Value;
                            if (OperatingSystem.IsWindows())
                            {
-                               var outputDirectory = DoPublish(RootProjectName, Frameworks.Net462, nugetVersion);
+                               var outputDirectory = DoPublish(RootProjectName, Frameworks.Net481, nugetVersion);
                                outputDirectory.Copy(LegacyCalamariDirectory / RootProjectName, ExistsPolicy.DirectoryMerge | ExistsPolicy.FileFail);
-                               DoPublish(RootProjectName, Frameworks.Net462, nugetVersion, FixedRuntimes.Cloud);
+                               DoPublish(RootProjectName, Frameworks.Net481, nugetVersion, FixedRuntimes.Cloud);
                            }
                            else
                            {
@@ -412,7 +412,7 @@ partial class Build : NukeBuild
 
         packagesToPublish
             //We only need to bundle executable (not tests or libraries) full framework projects
-            .Where(d => d.Framework == Frameworks.Net462 && d.Project.GetOutputType() == "Exe")
+            .Where(d => d.Framework == Frameworks.Net481 && d.Project.GetOutputType() == "Exe")
             .ForEach(calamariPackageMetadata =>
                      {
                          Log.Information("Copying {ProjectName} for legacy Calamari '{Framework}' and arch '{Architecture}'",
@@ -454,7 +454,7 @@ partial class Build : NukeBuild
                             DotNetPublish(s => s
                                                .SetConfiguration(Configuration)
                                                .SetProject(project.Path)
-                                               .SetFramework(Frameworks.Net462)
+                                               .SetFramework(Frameworks.Net481)
                                                .EnableNoRestore()
                                                .SetVersion(NugetVersion.Value)
                                                .SetInformationalVersion(OctoVersionInfo.Value?.InformationalVersion)
@@ -491,10 +491,10 @@ partial class Build : NukeBuild
                            var packageActions = new List<Action>
                            {
                                () => DoPackage(RootProjectName,
-                                               OperatingSystem.IsWindows() ? Frameworks.Net462 : Frameworks.Net80,
+                                               OperatingSystem.IsWindows() ? Frameworks.Net481 : Frameworks.Net80,
                                                nugetVersion),
                                () => DoPackage(RootProjectName,
-                                               OperatingSystem.IsWindows() ? Frameworks.Net462 : Frameworks.Net80,
+                                               OperatingSystem.IsWindows() ? Frameworks.Net481 : Frameworks.Net80,
                                                nugetVersion,
                                                FixedRuntimes.Cloud),
                            };
@@ -547,8 +547,8 @@ partial class Build : NukeBuild
                                    //if this is windows, publish a netfx version of the tests project
                                    if (OperatingSystem.IsWindows())
                                    {
-                                       var publishedLocation = DoPublish("Calamari.Tests", Frameworks.Net462, nugetVersion);
-                                       var zipName = $"Calamari.Tests.{Frameworks.Net462}.{nugetVersion}.zip";
+                                       var publishedLocation = DoPublish("Calamari.Tests", Frameworks.Net481, nugetVersion);
+                                       var zipName = $"Calamari.Tests.{Frameworks.Net481}.{nugetVersion}.zip";
                                        publishedLocation.CompressTo(ArtifactsDirectory / zipName);
                                    }
                                }
